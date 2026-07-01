@@ -1,4 +1,5 @@
 from fastapi import FastAPI, UploadFile, File
+from backend.app.parser.sigma_parser import parse_sigma_rule
 
 app = FastAPI()
 
@@ -14,7 +15,9 @@ def root():
 
 @app.post("/upload")
 async def upload_sigma_rule(file: UploadFile = File(...)):
-    return {
-        "filename": file.filename,
-        "message": "Sigma rule uploaded successfully."
-    }
+
+    content = await file.read()
+
+    parsed_rule = parse_sigma_rule(content)
+
+    return parsed_rule
