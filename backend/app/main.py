@@ -3,6 +3,7 @@ from backend.app.parser.sigma_parser import parse_sigma_rule
 from backend.app.validator.validator import validate_sigma_rule
 from backend.app.scoring.risk_scoring import calculate_risk_score
 from backend.app.scoring.mitre_mapper import map_to_mitre
+from backend.app.review.rule_review import review_sigma_rule
 
 app = FastAPI()
 
@@ -29,9 +30,13 @@ async def upload_sigma_rule(file: UploadFile = File(...)):
 
     mitre = map_to_mitre(parsed_rule)
 
+    review = review_sigma_rule(parsed_rule)
+
+
     return {
     "rule": parsed_rule,
     "validation": validation,
     "score": score,
-    "mitre" : mitre
+    "mitre" : mitre,
+    "review" : review
 }
