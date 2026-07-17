@@ -1,3 +1,6 @@
+from .recommendations import generate_recommendations
+
+
 def review_sigma_rule(rule):
 
     strengths = []
@@ -50,8 +53,11 @@ def review_sigma_rule(rule):
     else:
         status = "Needs Improvement"
 
+    recommendations = generate_recommendations(missing)
+
     return {
         "status": status,
         "strengths": strengths,
-        "missing": missing
+        "missing": missing,
+        "recommendations": recommendations
     }

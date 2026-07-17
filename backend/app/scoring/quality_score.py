@@ -1,0 +1,1 @@
+def calculate_quality_score(rule):
