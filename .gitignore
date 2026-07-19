@@ -1,15 +1,15 @@
 # Python
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Virtual environments
 .venv/
-venv/
-env/
+__pycache__/
+*.pyc
 
-# VS Code
+# Reports
+reports/
+*.pdf
+
+# OS / IDE
 .vscode/
+.idea/
 
-# Environment files
-.env
+# Local branding assets
+backend/app/assets/

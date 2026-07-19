@@ -1,4 +1,5 @@
 from .recommendations import generate_recommendations
+from .quality_score import calculate_quality_score
 
 
 def review_sigma_rule(rule):
@@ -55,8 +56,11 @@ def review_sigma_rule(rule):
 
     recommendations = generate_recommendations(missing)
 
+    quality = calculate_quality_score(missing)
+
     return {
         "status": status,
+        "quality": quality,
         "strengths": strengths,
         "missing": missing,
         "recommendations": recommendations
