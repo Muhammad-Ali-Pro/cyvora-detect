@@ -13,3 +13,11 @@ reports/
 
 # Local branding assets
 backend/app/assets/
+symora.db
+
+# Python
+__pycache__/
+*.py[cod]
+
+# SQLite
+symora.db

@@ -8,7 +8,11 @@ from backend.app.scoring.mitre_mapper import map_to_mitre
 from backend.app.review.rule_review import review_sigma_rule
 from backend.app.report.pdf_generator import generate_pdf_report
 
-from backend.app.config import APP_NAME, APP_VERSION
+from backend.app.config import (
+    APP_NAME,
+    APP_VERSION,
+    DEFAULT_REPORT_NAME,
+)
 
 
 app = FastAPI()
@@ -70,12 +74,12 @@ async def generate_report(file: UploadFile = File(...)):
         "review": review
     }
 
-    output_path = "cyvora_report.pdf"
+    output_path = DEFAULT_REPORT_NAME
 
     generate_pdf_report(report_data, output_path)
 
     return FileResponse(
         output_path,
         media_type="application/pdf",
-        filename="cyvora_report.pdf"
+        filename=DEFAULT_REPORT_NAME
     )
