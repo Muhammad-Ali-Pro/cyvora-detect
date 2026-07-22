@@ -1,0 +1,9 @@
+title: Suspicious PowerShell Execution
+
+logsource:
+  product: windows
+
+detection:
+  selection:
+    Image: powershell.exe
+  condition: selection
